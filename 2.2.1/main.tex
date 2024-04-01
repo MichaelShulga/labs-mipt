@@ -56,20 +56,17 @@
 В данной работе исследуется взаимная диффузия гелия и воздуха. Отметим, что давление и температура в системе предполагаются неизменным: $P_0 = (n_{He}+n_{в})kT = const$, где $n_{He}$  и $n_{в}$ -- концентрации диффундирующих газов. Поэтому для любых изменений концентраций справедливо $\Delta n_{в} = -\Delta n_{He}$. Следовательно, достаточно ограничиться описанием диффузии одного из компонентов, например гелия.
 
 Приведём теоретическую оценку для коэффициента диффузии. В работе концентрация гелия, как правило, мала ($n_{He} \ll n_{в}$). Кроме того, атомы гелия легче молекул, составляющих воздух ($m_{He} \ll m_{N_2}, m_{O_2}$), значит их средняя тепловая скорость велика по сравнению с остальными частицами. Поэтому перемешивание газов в работе можно приближенно описывать как диффузию примеси лёгких частиц He на практически стационарном фоне воздуха. Коэффициент диффузии в таком приближении равен
-\begin{equation}
-    \label{D}
+\begin{equation}\label{D}
     D = \frac{1}{3} \lambda \langle v \rangle,
 \end{equation}
 где $\lambda = \frac{1}{n\sigma}$ -- длина свободного пробега диффундирующих частиц; $\langle v \rangle = \sqrt{\frac{8kT}{\pi m}}$ -- их средняя тепловая скорость.
 
 Предпологая, что процесс диффузии будет квазиостационарным, можно показать, что разность концентраций будет убывать по экспоненциальному закону
-\begin{equation}
-    \label{Delta_n}
+\begin{equation}\label{Delta_n}
     \Delta n = \Delta n_0 e^{-t / \tau},
 \end{equation}
 где $\tau$ -- характерное время выравнивания концентраций между сосудами, определяемое следующей формулой
-\begin{equation}
-    \label{Tau}
+\begin{equation}\label{Tau}
     \tau = \frac{1}{D} \frac{VL}{2S}.
 \end{equation}
 
@@ -93,8 +90,85 @@
 
 % \section{Методика измерений}
 
-% \section{Результаты измерений и обработка данных}
+\newpage
 
-% \section{Обсуждение результатов}
+\section{Результаты измерений и обработка данных}
+
+\subsection*{Параметры установки}
+
+\begin{equation}\label{V}
+    \input{tables/V.tex}
+\end{equation}
+
+\begin{equation}\label{LdivS}
+    \input{tables/LdivS.tex}
+\end{equation}
+
+\begin{equation}\label{T}
+    \input{tables/T.tex}
+\end{equation}
+
+\begin{equation}\label{P}
+    \input{tables/P.tex}
+\end{equation}
+
+\subsection*{Зависимость показаний вольтметра от времени}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.85\textwidth]{lnU(t).pdf}
+    \caption{Логарифмическая зависимость}\label{lnUt}
+\end{figure}
+
+Используя формулы (\ref{Delta_n}) и (\ref{Tau}), по угловым коэффициентам и известным геометрическим параметрам установки (\ref{V}) и (\ref{LdivS}) рассчитаем коэффициенты взаимной диффузии при выбранных рабочих давлениях:
+
+\begin{table}[h!]
+    \centering
+    \input{tables/diffusivity_table.tex}
+    \caption{Коэффициенты взаимной диффузии при выбранных рабочих давлениях}
+\end{table}
+
+\FloatBarrier
+
+\subsection*{Коэффициент диффузии}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.85\textwidth]{D(1divP).pdf}
+    \caption{Зависимость коэффициента диффузии от обратного давления}
+\end{figure}
+
+Экстраполируя график к атмосферному давлению (\ref{P}):
+\begin{equation}\label{D0}
+    \input{tables/D0.tex}
+\end{equation}
+
+\FloatBarrier
+
+\subsection*{Длина свободного пробега и эффективное сечение}
+
+Оценим длину свободного пробега атомов гелия в воздухе по формуле (\ref{D}):
+\begin{equation}\label{lambda0}
+    \input{tables/lambda0.tex}
+\end{equation}
+
+А также эффективное сечение столкновений атомов гелия с молекулами воздуха:
+\begin{equation}\label{sigma0}
+    \input{tables/sigma0.tex}
+\end{equation}
+
+\section{Обсуждение результатов}
+
+Из графика (рис. \ref{lnUt}) видно, что процесс диффузии подчиняется закону (\ref{Delta_n}).
+
+Вычислен коэффициент диффузии при атмосферном двалении (\ref{D0}), значение которого хорошо согласуется с табличным:
+\begin{equation}\label{D_real}
+    \input{tables/D_real.tex}
+\end{equation}
+
+Вычислены длина свободного пробега атомов гелия в воздухе (\ref{lambda0}), а также эффективное сечение столкновений атомов гелия с молекулами воздуха (\ref{sigma0}). Значение последнего хорошо согласуется с теоретически вычисленным по порядку:
+\begin{equation}\label{sigma_real}
+    \input{tables/sigma_real.tex}
+\end{equation}
 
 \end{document}
