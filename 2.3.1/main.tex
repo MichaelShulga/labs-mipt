@@ -25,6 +25,7 @@
 
 % Математика
 \usepackage{amsmath}
+\usepackage{mathtools}
 
 % Ссылки TODO
 % \usepackage[unicode=true]{hyperref}
@@ -54,7 +55,7 @@
 производится откачка нашего объема. Обозначим через $Q_d$ количество газа, десорбирующегося с поверхности откачиваемого объема в единицу времени, через $Q_i$ — количество газа, проникающего в единицу времени в этот объем извне — через течи. Будем считать, что насос обладает скоростью откачки $W$ и в то же время сам является источником газа; пусть $Q_n$ — поток газа, поступающего из насоса назад в откачиваемую систему. Будем измерять количество газа $Q_d$, $Q_i$ и $Q_n$ в единицах $PV$ (легко видеть, что это произведение с точностью до множителя $RT/ \mu$ равно массе газа). Основное уравнение, описывающее процесс откачки, имеет вид
 
 \begin{equation}
-\label{otkachka}
+\label{pump}
 	-VdP=(PW-Q_d-Q_n-Q_i)dt.
 \end{equation}
 
@@ -73,7 +74,7 @@
 
 Обычно $Q_i$ постоянно, a $Q_n$ и $Q_d$ слабо зависят от времени, поэтому в наших условиях все эти члены можно считать постоянными. Считая также постоянной скорость откачки $W$ , уравнение~(\ref{otkachka}) можно проинтегрировать и, используя~(\ref{predel_1}), получить
 \begin{equation}
-\label{davlenie}
+\label{pressure}
 	P = P_o \exp{(-\frac{W}{V} t)} + P_{pr}.
 \end{equation}
 
@@ -83,7 +84,7 @@
 Для количества газa, протекающего через трубу в условиях высокого вакуума или, как говорят, в кнудсеновском режиме, справедлива формула
 
 \begin{equation}
-\label{formula}
+\label{flow1}
 	\frac{d(PV)}{dt}=\frac{4}{3}r^3 \sqrt{\frac{2\pi RT}{\mu}} \frac{P_2-P_1}{L}.
 \end{equation}
 
@@ -91,6 +92,7 @@
 Пренебрежем давлением $P_1$ у конца, обращенного к насосу. Будем измерять количество газа, покидающего установку при давлении $P = P_2$. Пропускная способность трубы
 
 \begin{equation}
+	\label{flow2}
 	C_{tr}=(\frac{dV}{dt})_{tr}=\frac{4}{3}\frac{r^3}{L}\sqrt{\frac{2\pi RT}{\mu}}.
 \end{equation}
 
@@ -129,7 +131,124 @@
 	
 \end{enumerate}
 
-% \section{Результаты измерений и обработка данных}
+\section{Результаты измерений и обработка данных}
+
+\subsection*{Параметры}
+
+\begin{equation}
+    \input{tables/g.tex}
+\end{equation}
+\begin{equation}
+    \input{tables/R.tex}
+\end{equation}
+\begin{equation}
+    \input{tables/T.tex}
+\end{equation}
+\begin{equation}
+    \input{tables/P.tex}
+\end{equation}
+\begin{equation}
+    \input{tables/rho.tex}
+\end{equation}
+\begin{equation}\label{V}
+    \input{tables/V.tex}
+\end{equation}
+\begin{equation}
+    \input{tables/L.tex}
+\end{equation}
+\begin{equation}
+    \input{tables/r.tex}
+\end{equation}
+
+\subsection*{Объём форвакуумной и высоковакуумной частей установки}
+
+Согласно закону Бойля-Мариотта:
+\begin{equation}
+	P_{атм}V_{зап}=P_1V_{фв}=P_2(V_{фв}+V_{вв}),
+\end{equation}
+
+Измеренные давления:
+\begin{equation}
+	\input{tables/dh1.tex}
+\end{equation}
+\begin{equation}
+	\input{tables/dh2.tex}
+\end{equation}
+
+Зная объём «запертого» воздуха (\ref{V}), найдем объём форвакуумной и высоковакуумной части:
+\begin{equation}
+	\input{tables/Vf.tex}
+\end{equation}
+\begin{equation}
+	\input{tables/Vv.tex}
+\end{equation}
+
+\subsection*{Скорость откачки}
+
+\begin{figure}[h]
+    \center{\includegraphics[width=0.634\textwidth]{drop1.pdf}}
+    \caption{Падение давления (опыт 1)}
+	\label{drop1}
+\end{figure}
+
+\begin{figure}[h]
+    \center{\includegraphics[width=0.634\textwidth]{drop2.pdf}}
+    \caption{Падение давления (опыт 2)}
+	\label{drop2}
+\end{figure}
+
+Из соотношения (\ref{pressure}) и графиков (рис. \ref{drop1}) и (рис. \ref{drop2}):
+
+\begin{equation}
+	\input{tables/W1.tex}
+\end{equation}
+\begin{equation}
+	\input{tables/W2.tex}
+\end{equation}
+
+\FloatBarrier
+
+\subsection*{Поток газа из насоса}
+
+Из соотношения (\ref{pump}) и графиков (рис. \ref{rise1}) и (рис. \ref{rise2}):
+\begin{equation}
+	\input{tables/Q1.tex}
+\end{equation}
+\begin{equation}
+	\input{tables/Q2.tex}
+\end{equation}
+
+\begin{figure}[h]
+    \center{\includegraphics[width=0.75\textwidth]{rise1.pdf}}
+    \caption{Падение давления (опыт 1)}
+	\label{rise1}
+\end{figure}
+
+\begin{figure}[h]
+    \center{\includegraphics[width=0.75\textwidth]{rise2.pdf}}
+    \caption{Падение давления (опыт 2)}
+	\label{rise2}
+\end{figure}
+
+\FloatBarrier
+
+\subsection*{Скорость откачки и исскуственная течь}
+
+Давление при течи:
+\begin{equation}
+	\input{tables/h_lim.tex}
+\end{equation}
+\begin{equation}
+	\input{tables/h_st.tex}
+\end{equation}
+\begin{equation}
+	\input{tables/h_fv.tex}
+\end{equation}
+
+Из соотношений (\ref{flow1}) и (\ref{flow2}):
+\begin{equation}
+	\input{tables/W.tex}
+\end{equation}
 
 % \section{Обсуждение результатов}
 
